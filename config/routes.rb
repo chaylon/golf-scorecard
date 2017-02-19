@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   end
 
   root "courses#index"
-  
+
 end
