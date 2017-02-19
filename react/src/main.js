@@ -4,12 +4,14 @@ import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import Home from './components/Home';
 import CourseForm from './components/CourseForm';
+import CourseList from './components/CourseList';
 
 $(function() {
   if (document.getElementById('app')){
     ReactDOM.render(
       <Router history={browserHistory}>
         <Route path="/" component={Home}/>
+        <Route path="/courses" component={CourseList}/>
         <Route path="/courses/new" component={CourseForm}/>
       </Router>,
       document.getElementById('app')
