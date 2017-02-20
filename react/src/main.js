@@ -12,9 +12,9 @@ $(function() {
     ReactDOM.render(
       <Router history={browserHistory}>
         <Route path="/" component={Home}>
+          <Route path="/new" component={CourseForm}/>
           <Route path="/courses" component={CourseList}/>
           <Route path="/courses/:id" component={CourseShow}/>
-          <Route path="/courses/new" component={CourseForm}/>
         </Route>
       </Router>,
       document.getElementById('app')
