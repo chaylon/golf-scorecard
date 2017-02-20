@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
+import HoleForm from './HoleForm';
 
 class CourseShow extends Component {
   constructor(props) {
     super(props);
-    this.state = {course: null};
+    this.state = {
+      course: null,
+      selected: false
+    };
     this.getCourses = this.getCourse.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -21,14 +26,25 @@ class CourseShow extends Component {
     })
   }
 
+  handleClick() {
+    this.setState({selected: true});
+  }
+
   render() {
     if (this.state.course) {
       let course = this.state.course;
+      let onClick = () => {
+        this.handleClick();
+      }
       return(
         <div>
           <p>{course.name}</p>
           <p>{course.address}</p>
           <p>{course.city}, {course.state}, {course.zip}</p>
+          <p><a href="javascript:;" onClick={onClick}>Add Holes</a></p>
+          <HoleForm
+            selected = {this.state.selected}
+          />
         </div>
       );
     } else {
