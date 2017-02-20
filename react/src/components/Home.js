@@ -9,7 +9,10 @@ class Home extends Component {
   render() {
     return(
       <div>
+        <Link to="/">Home</Link>
+        <Link to="/courses">Courses</Link>
         <Link to="/courses/new">New</Link>
+        {this.props.children}
       </div>
     );
   }
