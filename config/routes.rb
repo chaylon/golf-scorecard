@@ -7,5 +7,10 @@ Rails.application.routes.draw do
   end
 
   root "courses#index"
-  
+
+  namespace :api do
+    namespace :v1 do
+      resources :courses, only: [:index, :show, :create]
+    end
+  end
 end
