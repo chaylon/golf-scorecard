@@ -1,15 +1,23 @@
 import React from 'react';
+import HoleInput from './HoleInput';
 
 const HoleForm = props => {
 
   let form;
   if (props.selected) {
-    form = <div>This will be a form</div>;
+    form = [];
+    for (let i=1; i<19; i++) {
+      form.push(<HoleInput key={i} />);
+    }
+    form.push(<button type="submit">Submit</button>)
+    form.push(<)
   }
 
   return(
     <div>
-      {form}
+      <form>
+        {form}
+      </form>
     </div>
   )
 }
