@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170218215202) do
+ActiveRecord::Schema.define(version: 20170220041337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 20170218215202) do
     t.integer  "yardage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "holes", force: :cascade do |t|
+    t.integer "number",    null: false
+    t.integer "par",       null: false
+    t.integer "yardage",   null: false
+    t.integer "course_id"
+    t.index ["course_id"], name: "index_holes_on_course_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
