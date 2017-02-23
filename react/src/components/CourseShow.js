@@ -31,8 +31,23 @@ class CourseShow extends Component {
     this.setState({selected: !this.state.selected});
   }
 
-  handleSubmit() {
-    debugger;
+  handleSubmit(info) {
+    let courseInfo = []
+    for (let i=0; i<53; i+=3) {
+      courseInfo.push({
+        hole: info[i].value,
+        par: info[i+1].value,
+        yardage: info[i+2].value
+      })
+    }
+    let data = {courseData: courseInfo}
+    let json = JSON.stringify(data);
+    fetch(`/api/v1/courses/${this.props.params["id"]}/holes`, {
+      credentials: "same-origin",
+      method: "post",
+      headers: { 'Content-Type': 'application/json' },
+      body: json
+    })
   }
 
   render() {
@@ -45,7 +60,8 @@ class CourseShow extends Component {
 
       let onSubmit = (event) => {
         event.preventDefault();
-        this.handleSubmit();
+        let data = event.target.elements
+        this.handleSubmit(data);
       }
 
       let button;
