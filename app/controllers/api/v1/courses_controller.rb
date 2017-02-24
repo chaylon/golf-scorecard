@@ -8,7 +8,8 @@ class Api::V1::CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    render json: {course: @course}
+    @holes = @course.holes
+    render json: {course: @course, holes: @holes}
   end
 
   def create
