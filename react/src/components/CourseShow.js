@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import HoleForm from './HoleForm';
+import Hole from './Hole';
 
 class CourseShow extends Component {
   constructor(props) {
     super(props);
     this.state = {
       course: null,
-      selected: false
+      selected: false,
+      holes: []
     };
     this.getCourses = this.getCourse.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -23,7 +25,10 @@ class CourseShow extends Component {
     )
     .then(response => response.json())
     .then(body => {
-      this.setState({course: body.course});
+      this.setState({
+        course: body.course,
+        holes: body.holes
+      });
     })
   }
 
@@ -64,23 +69,39 @@ class CourseShow extends Component {
         this.handleSubmit(data);
       }
 
-      let button;
-      if (!this.state.selected) {
-        button = <p><a href="javascript:;" onClick={onClick}>Add Holes</a></p>
+      let showHoles;
+      if (this.state.holes.length > 0) {
+        showHoles = this.state.holes.map((hole) => {
+          return(
+            <Hole
+              key = {hole.id}
+              hole = {hole}
+            />
+          )
+        })
       } else {
-        button = <p><a href="javascript:;" onClick={onClick}>Cancel</a></p>
-      }
 
+        let button;
+        if (!this.state.selected) {
+          button = <p><a href="javascript:;" onClick={onClick}>Add Holes</a></p>
+        } else {
+          button = <p><a href="javascript:;" onClick={onClick}>Cancel</a></p>
+        }
+
+        showHoles = <div>
+                      {button}
+                      <HoleForm
+                      selected = {this.state.selected}
+                      onSubmit = {onSubmit}
+                      />
+                    </div>
+      }
       return(
         <div>
           <p>{course.name}</p>
           <p>{course.address}</p>
           <p>{course.city}, {course.state}, {course.zip}</p>
-          {button}
-          <HoleForm
-            selected = {this.state.selected}
-            onSubmit = {onSubmit}
-          />
+          {showHoles}
         </div>
       );
     } else {
