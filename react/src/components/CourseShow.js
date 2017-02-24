@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import HoleForm from './HoleForm';
+import Hole from './Hole';
 
 class CourseShow extends Component {
   constructor(props) {
@@ -70,7 +71,14 @@ class CourseShow extends Component {
 
       let showHoles;
       if (this.state.holes.length > 0) {
-        showHoles = <p>{this.state.holes[0].par}</p>
+        showHoles = this.state.holes.map((hole) => {
+          return(
+            <Hole
+              key = {hole.id}
+              hole = {hole}
+            />
+          )
+        })
       } else {
 
         let button;
