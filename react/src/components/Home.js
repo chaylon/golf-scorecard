@@ -7,11 +7,13 @@ class Home extends Component {
   }
 
   render() {
+    debugger
     return(
       <div>
         <Link to="/">Home</Link>
         <Link to="/courses">Courses</Link>
         <Link to="/new">New</Link>
+        <Link to="/scorecards">Scorecards</Link>
         {this.props.children}
       </div>
     );

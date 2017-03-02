@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import HoleForm from './HoleForm';
 import Hole from './Hole';
+import {Link} from 'react-router';
 
 class CourseShow extends Component {
   constructor(props) {
@@ -73,10 +74,13 @@ class CourseShow extends Component {
       if (this.state.holes.length > 0) {
         showHoles = this.state.holes.map((hole) => {
           return(
-            <Hole
-              key = {hole.id}
-              hole = {hole}
-            />
+            <div>
+              <Hole
+                key = {hole.id}
+                hole = {hole}
+              />
+              
+            </div>
           )
         })
       } else {
