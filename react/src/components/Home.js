@@ -7,7 +7,6 @@ class Home extends Component {
   }
 
   render() {
-    debugger
     return(
       <div>
         <Link to="/">Home</Link>
