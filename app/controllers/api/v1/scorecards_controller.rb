@@ -3,10 +3,10 @@ class Api::V1::ScorecardsController < ApplicationController
 
   def index
     @scorecards = Scorecard.where("user_id = #{current_user.id}")
-    render json: {scorecards: scorecards}
+    render json: {scorecards: @scorecards}
   end
 
   def create
-
+    
   end
 end

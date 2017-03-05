@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router';
+import ScorecardForm from './ScorecardForm';
 
 class Scorecard extends Component {
   constructor(props) {
@@ -24,9 +26,9 @@ class Scorecard extends Component {
   }
 
   render() {
-    debugger
     return(
       <div>
+        <Link to="/scorecards/new">New</Link>
         {this.state.scorecards}
       </div>
     );
