@@ -74,13 +74,10 @@ class CourseShow extends Component {
       if (this.state.holes.length > 0) {
         showHoles = this.state.holes.map((hole) => {
           return(
-            <div>
-              <Hole
-                key = {hole.id}
-                hole = {hole}
-              />
-              
-            </div>
+            <Hole
+              key = {hole.id}
+              hole = {hole}
+            />
           )
         })
       } else {

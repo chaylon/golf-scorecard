@@ -13,7 +13,7 @@ class CourseList extends Component {
   }
 
   getCourses() {
-    fetch("api/v1/courses",
+    fetch("/api/v1/courses",
       {credentials: "same-origin"}
     )
     .then(response => response.json())

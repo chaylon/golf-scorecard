@@ -8,6 +8,7 @@ import CourseList from './components/CourseList';
 import CourseShow from './components/CourseShow';
 import Scorecard from './components/Scorecard';
 import ScorecardForm from './components/ScorecardForm';
+import ScorecardList from './components/ScorecardList';
 
 $(function() {
   if (document.getElementById('app')){
@@ -17,9 +18,9 @@ $(function() {
           <Route path="/new" component={CourseForm}/>
           <Route path="/courses" component={CourseList}/>
           <Route path="/courses/:id" component={CourseShow}/>
-          <Route path="/scorecards" component={Scorecard}>
-            <Route path="/scorecards/new" component={ScorecardForm}/>
-          </Route>
+          <Route path="/scorecards" component={ScorecardList}/>
+          <Route path="/scorecards/new" component={ScorecardForm}/>
+          <Route path="/scorecards/:course" component={Scorecard}/>
         </Route>
       </Router>,
       document.getElementById('app')
