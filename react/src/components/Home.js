@@ -11,7 +11,8 @@ class Home extends Component {
       <div>
         <Link to="/">Home</Link>
         <Link to="/courses">Courses</Link>
-        <Link to="/new">New</Link>
+        <Link to="/new">New Course</Link>
+        <Link to="/scorecards">Scorecards</Link>
         {this.props.children}
       </div>
     );

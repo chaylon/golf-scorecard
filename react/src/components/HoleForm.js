@@ -6,7 +6,7 @@ const HoleForm = props => {
   if (props.selected) {
     form = [];
     for (let i=1; i<19; i++) {
-      form.push(<HoleInput key={i} />);
+      form.push(<HoleInput key={i} id={i} />);
     }
     form.push(<button key="button" type="submit">Submit</button>)
   }
