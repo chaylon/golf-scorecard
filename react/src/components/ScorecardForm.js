@@ -6,7 +6,6 @@ class ScorecardForm extends Component {
     super(props);
     this.state = {
       courses: [],
-      selected: null
     };
     this.getCourses = this.getCourses.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
