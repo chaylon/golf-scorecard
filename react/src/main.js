@@ -20,7 +20,7 @@ $(function() {
           <Route path="/courses/:id" component={CourseShow}/>
           <Route path="/scorecards" component={ScorecardList}/>
           <Route path="/scorecards/new" component={ScorecardForm}/>
-          <Route path="/scorecards/:course" component={Scorecard}/>
+          <Route path="/scorecards/:id" component={Scorecard}/>
         </Route>
       </Router>,
       document.getElementById('app')

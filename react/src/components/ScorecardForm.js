@@ -5,7 +5,8 @@ class ScorecardForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      courses: []
+      courses: [],
+      selected: null
     };
     this.getCourses = this.getCourses.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,7 +37,7 @@ class ScorecardForm extends Component {
   render() {
     let onSubmit = (event) => {
       event.preventDefault();
-      this.handleSubmit(event.target.elements[0].value)
+      this.handleSubmit(event.target.elements[0].selectedOptions[0].id)
     }
 
     let dropdownItems = [];
