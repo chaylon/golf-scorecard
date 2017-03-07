@@ -27,7 +27,7 @@ class Scorecard extends Component {
 
   render() {
     let holes;
-    if (this.state.holes) {
+    if (this.state.holes.length != 0) {
       holes = this.state.holes.map((hole) => {
         return(
           <Score
@@ -36,6 +36,8 @@ class Scorecard extends Component {
           />
         )
       });
+    } else {
+      holes = <p>Please update the course first!</p>
     }
 
     return(
