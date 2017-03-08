@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
 import Score from './Score';
+import ScoreForm from './ScoreForm';
 
 class Scorecard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      holes: []
+      holes: [],
+      total: 0,
+      score: null
     }
+    this.getCourseInfo = this.getCourseInfo.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -25,6 +30,11 @@ class Scorecard extends Component {
     })
   }
 
+  handleChange(num) {
+    let newTotal = this.state.total + Number(num);
+    this.setState({total: newTotal});
+  }
+
   render() {
     let holes;
     if (this.state.holes.length != 0) {
@@ -36,13 +46,21 @@ class Scorecard extends Component {
           />
         )
       });
-    } else {
-      holes = <p>Please update the course first!</p>
+    }
+
+    let onChange = (event) => {
+      event.preventDefault();
+      this.handleChange(event.target.value);
     }
 
     return(
       <div>
         {holes}
+        <ScoreForm
+          onChange = {onChange}
+        />
+        <p>Total: {this.state.total}</p>
+        <p>Score: {this.state.score}</p>
       </div>
     );
   }
