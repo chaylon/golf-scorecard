@@ -6,6 +6,7 @@ class Scorecard extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      course: null,
       holes: [],
       total: 0,
       score: null
@@ -25,7 +26,8 @@ class Scorecard extends Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-        holes: body.holes
+        holes: body.holes,
+        course: body.course
       });
     })
   }
@@ -37,6 +39,9 @@ class Scorecard extends Component {
 
   render() {
     let holes;
+    let course;
+    let par;
+    let yardage;
     if (this.state.holes.length != 0) {
       holes = this.state.holes.map((hole) => {
         return(
@@ -48,6 +53,13 @@ class Scorecard extends Component {
       });
     }
 
+    if (this.state.course !== null) {
+      debugger
+      course = this.state.course.name;
+      par = this.state.course.par;
+      yardage = this.state.course.yardage;
+    }
+
     let onChange = (event) => {
       event.preventDefault();
       this.handleChange(event.target.value);
@@ -55,6 +67,9 @@ class Scorecard extends Component {
 
     return(
       <div>
+        {course}
+        {par}
+        {yardage}
         {holes}
         <ScoreForm
           onChange = {onChange}
