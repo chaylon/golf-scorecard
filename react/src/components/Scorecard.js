@@ -9,10 +9,12 @@ class Scorecard extends Component {
       course: null,
       holes: [],
       total: 0,
-      score: null
+      score: null,
+      holeScores: {}
     }
     this.getCourseInfo = this.getCourseInfo.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.updateStrokes = this.updateStrokes.bind(this);
+    this.updateScore = this.updateScore.bind(this);
   }
 
   componentDidMount() {
@@ -32,9 +34,21 @@ class Scorecard extends Component {
     })
   }
 
-  handleChange(num) {
-    let newTotal = this.state.total + Number(num);
-    this.setState({total: newTotal});
+  updateStrokes(num, id) {
+    let updatedHoles = this.state.holeScores;
+    if (num === "") {
+      updatedHoles[id] = 0
+    } else {
+      updatedHoles[id] = parseInt(num);
+    }
+    this.setState({holeScores: updatedHoles});
+    this.updateScore()
+  }
+
+  updateScore() {
+    let values = Object.values(this.state.holeScores);
+    let sum = values.reduce((a, b) => a + b, 0);
+    this.setState({total: sum});
   }
 
   render() {
@@ -54,15 +68,13 @@ class Scorecard extends Component {
     }
 
     if (this.state.course !== null) {
-      debugger
       course = this.state.course.name;
       par = this.state.course.par;
       yardage = this.state.course.yardage;
     }
 
     let onChange = (event) => {
-      event.preventDefault();
-      this.handleChange(event.target.value);
+      this.updateStrokes(event.target.value, event.target.id)
     }
 
     return(
