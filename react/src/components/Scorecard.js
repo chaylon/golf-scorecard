@@ -37,12 +37,12 @@ class Scorecard extends Component {
   updateStrokes(num, id) {
     let updatedHoles = this.state.holeScores;
     if (num === "") {
-      updatedHoles[id] = 0
+      updatedHoles[id] = 0;
     } else {
       updatedHoles[id] = parseInt(num);
     }
     this.setState({holeScores: updatedHoles});
-    this.updateScore()
+    this.updateScore();
   }
 
   updateScore() {
@@ -74,7 +74,7 @@ class Scorecard extends Component {
     }
 
     let onChange = (event) => {
-      this.updateStrokes(event.target.value, event.target.id)
+      this.updateStrokes(event.target.value, event.target.id);
     }
 
     return(
