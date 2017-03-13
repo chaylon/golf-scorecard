@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Score from './Score';
 import ScoreForm from './ScoreForm';
+import {browserHistory} from 'react-router';
 
 class Scorecard extends Component {
   constructor(props) {
@@ -72,7 +73,8 @@ class Scorecard extends Component {
 
   postScores() {
     let data = {
-      holeScores: this.state.holeScores
+      holeScores: this.state.holeScores,
+      course: this.state.course
     };
     let jsonStringData = JSON.stringify(data);
     fetch('/api/v1/scores', {
@@ -80,6 +82,9 @@ class Scorecard extends Component {
       method: "post",
       headers: { 'Content-Type': 'application/json' },
       body: jsonStringData
+    })
+    .then(response => {
+      browserHistory.push("/scorecards");
     });
   }
 

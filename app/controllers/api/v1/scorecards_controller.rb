@@ -10,6 +10,6 @@ class Api::V1::ScorecardsController < ApplicationController
     @total = params["holeScores"].values.inject(:+)
     @user = current_user
     @course = params["course"]
-    binding.pry
+    Scorecard.create(user: @user, course_id: @course["id"], total: @total)
   end
 end
