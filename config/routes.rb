@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :scorecards, only: [:index]
+      resources :scorecards, only: [:index, :create]
+      resources :scores, only: [:create]
       resources :courses, only: [:index, :show, :create] do
         resources :holes, only: [:create]
       end

@@ -7,6 +7,9 @@ class Api::V1::ScorecardsController < ApplicationController
   end
 
   def create
-    
+    @total = params["holeScores"].values.inject(:+)
+    @user = current_user
+    @course = params["course"]
+    binding.pry
   end
 end

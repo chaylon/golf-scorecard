@@ -15,6 +15,8 @@ class Scorecard extends Component {
     this.getCourseInfo = this.getCourseInfo.bind(this);
     this.updateStrokes = this.updateStrokes.bind(this);
     this.updateScore = this.updateScore.bind(this);
+    this.postScores = this.postScores.bind(this);
+    this.createScorecard = this.createScorecard.bind(this);
   }
 
   componentDidMount() {
@@ -51,6 +53,36 @@ class Scorecard extends Component {
     this.setState({total: sum});
   }
 
+  createScorecard() {
+    let data = {
+      holeScores: this.state.holeScores,
+      course: this.state.course
+    };
+    let jsonStringData = JSON.stringify(data);
+    fetch('/api/v1/scorecards', {
+      credentials: "same-origin",
+      method: "post",
+      headers: { 'Content-Type': 'application/json' },
+      body: jsonStringData
+    })
+    .then(response => {
+      this.postScores();
+    })
+  }
+
+  postScores() {
+    let data = {
+      holeScores: this.state.holeScores
+    };
+    let jsonStringData = JSON.stringify(data);
+    fetch('/api/v1/scores', {
+      credentials: "same-origin",
+      method: "post",
+      headers: { 'Content-Type': 'application/json' },
+      body: jsonStringData
+    });
+  }
+
   render() {
     let holes;
     let course;
@@ -77,6 +109,11 @@ class Scorecard extends Component {
       this.updateStrokes(event.target.value, event.target.id);
     }
 
+    let onSubmit = (event) => {
+      event.preventDefault();
+      this.createScorecard();
+    }
+
     return(
       <div>
         {course}
@@ -85,6 +122,7 @@ class Scorecard extends Component {
         {holes}
         <ScoreForm
           onChange = {onChange}
+          onSubmit = {onSubmit}
         />
         <p>Total: {this.state.total}</p>
         <p>Score: {this.state.score}</p>
