@@ -5,10 +5,13 @@ const ScoreForm = props => {
   for (let i=1; i<19; i++) {
     scores.push(<input key={i} id={i} type="text" onChange={props.onChange}/>);
   }
+  scores.push(<button key="submit" type="submit">Submit</button>);
 
   return(
     <div>
-      {scores}
+      <form onSubmit={props.onSubmit}>
+        {scores}
+      </form>
     </div>
   );
 };

@@ -21,15 +21,22 @@ class ScorecardList extends Component {
     )
     .then(response => response.json())
     .then(body => {
-      this.setState({scorecards: body.scorecards})
+      this.setState({scorecards: body.scorecards});
     })
   }
 
   render() {
+    let scorecards;
+    if (this.state.scorecards.length > 0) {
+      scorecards = this.state.scorecards.map((scorecard) => {
+        return(scorecard.total)
+      })
+    }
+
     return(
       <div>
         <Link to="/scorecards/new">New</Link>
-        {this.state.scorecards}
+        <li>{scorecards}</li>
       </div>
     );
   }
