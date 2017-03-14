@@ -27,11 +27,16 @@ class ScorecardList extends Component {
 
   render() {
     let scorecards;
+    if (this.state.scorecards.length > 0) {
+      scorecards = this.state.scorecards.map((scorecard) => {
+        return(scorecard.total)
+      })
+    }
 
     return(
       <div>
         <Link to="/scorecards/new">New</Link>
-        {scorecards}
+        <li>{scorecards}</li>
       </div>
     );
   }
