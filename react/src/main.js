@@ -9,6 +9,7 @@ import CourseShow from './components/CourseShow';
 import Scorecard from './components/Scorecard';
 import ScorecardForm from './components/ScorecardForm';
 import ScorecardList from './components/ScorecardList';
+import User from './components/User';
 
 $(function() {
   if (document.getElementById('app')){
@@ -21,6 +22,7 @@ $(function() {
           <Route path="/scorecards" component={ScorecardList}/>
           <Route path="/scorecards/new" component={ScorecardForm}/>
           <Route path="/scorecards/:id" component={Scorecard}/>
+          <Route path="/users/:id" component={User}/>
         </Route>
       </Router>,
       document.getElementById('app')
