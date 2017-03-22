@@ -13,6 +13,8 @@ class Api::V1::UsersController < ApplicationController
       sum += scorecard.total
     end
     average = sum/rounds
+    favorite = Course.find(Scorecard.where('user_id = ?', current_user.id).group('course_id').order('count(*)').limit(1).pluck(:course_id).first).name
+    binding.pry
     render json: {rounds: rounds, average: average}
   end
 
