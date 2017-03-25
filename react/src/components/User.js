@@ -5,7 +5,8 @@ class User extends Component {
     super(props);
     this.state = {
       rounds: 0,
-      average: 0
+      average: 0,
+      favorite: null
     };
     this.getInfo = this.getInfo.bind(this);
   }
@@ -22,7 +23,8 @@ class User extends Component {
     .then(body => {
       this.setState({
         rounds: body.rounds,
-        average: body.average
+        average: body.average,
+        favorite: body.favorite
       })
     });
   }
@@ -33,6 +35,7 @@ class User extends Component {
       <div>
         <p>Rounds: {this.state.rounds}</p>
         <p>Average Score: {this.state.average}</p>
+        <p>Favorite Course: {this.state.favorite}</p>
       </div>
     );
   }

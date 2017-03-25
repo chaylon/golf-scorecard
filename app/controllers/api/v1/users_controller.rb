@@ -12,8 +12,11 @@ class Api::V1::UsersController < ApplicationController
     scorecards.each do |scorecard|
       sum += scorecard.total
     end
-    average = sum/rounds
-    render json: {rounds: rounds, average: average}
+    average = (sum/rounds).round(2)
+    hash = Scorecard.where('user_id = ?', current_user.id).group('course_id').order('count_id DESC').count(:id)
+    key = hash.key(hash.values.max)
+    favorite = Course.find(key).name
+    render json: {rounds: rounds, average: average, favorite: favorite}
   end
 
 end
