@@ -14,17 +14,20 @@ import User from './components/User';
 $(function() {
   if (document.getElementById('app')){
     ReactDOM.render(
-      <Router history={browserHistory}>
-        <Route path="/" component={Home}>
-          <Route path="/new" component={CourseForm}/>
-          <Route path="/courses" component={CourseList}/>
-          <Route path="/courses/:id" component={CourseShow}/>
-          <Route path="/scorecards" component={ScorecardList}/>
-          <Route path="/scorecards/new" component={ScorecardForm}/>
-          <Route path="/scorecards/:id" component={Scorecard}/>
-          <Route path="/users/:id" component={User}/>
-        </Route>
-      </Router>,
+      <div>
+        <Router history={browserHistory}>
+          <Route path="/" component={Home}>
+            <Route path="/new" component={CourseForm}/>
+            <Route path="/courses" component={CourseList}/>
+            <Route path="/courses/:id" component={CourseShow}/>
+            <Route path="/scorecards" component={ScorecardList}/>
+            <Route path="/scorecards/new" component={ScorecardForm}/>
+            <Route path="/scorecards/:id" component={Scorecard}/>
+            <Route path="/users/:id" component={User}/>
+          </Route>
+        </Router>
+        <a href="/">Sign Out</a>
+      </div>,
       document.getElementById('app')
     );
   }
