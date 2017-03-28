@@ -30,6 +30,7 @@ class Home extends Component {
         <Link to="/new">New Course</Link>
         <Link to="/scorecards">Scorecards</Link>
         <Link to={`/users/${this.state.user.id}`}>Profile</Link>
+        <a href="/users/sign_out" data-method="delete">Sign Out</a>
         {this.props.children}
       </div>
     );
