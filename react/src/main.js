@@ -26,7 +26,7 @@ $(function() {
             <Route path="/users/:id" component={User}/>
           </Route>
         </Router>
-        <a href="/">Sign Out</a>
+        <a href="/users/sign_out" data-method="delete">Sign Out</a>
       </div>,
       document.getElementById('app')
     );
