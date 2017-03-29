@@ -11,7 +11,7 @@ class CourseShow extends Component {
       selected: false,
       holes: []
     };
-    this.getCourses = this.getCourse.bind(this);
+    this.getCourse = this.getCourse.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -54,6 +54,9 @@ class CourseShow extends Component {
       headers: { 'Content-Type': 'application/json' },
       body: json
     })
+    .then(response => {
+      this.getCourse();
+    });
   }
 
   render() {
