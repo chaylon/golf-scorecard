@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :courses, only: [:index]
+  resources :courses, only: [:index, :show]
+  resources :scorecards, only: [:index, :show, :new]
+  resources :users, only: [:show]
+  
   authenticated :user do
     root "courses#index"
   end
 
+  get '/new' => 'news#index'
   root "courses#index"
 
   namespace :api do
