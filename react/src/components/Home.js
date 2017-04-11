@@ -25,12 +25,14 @@ class Home extends Component {
   render() {
     return(
       <div>
-        <Link to="/">Home</Link>
-        <Link to="/courses">Courses</Link>
-        <Link to="/new">New Course</Link>
-        <Link to="/scorecards">Scorecards</Link>
-        <Link to={`/users/${this.state.user.id}`}>Profile</Link>
-        <a href="/users/sign_out" data-method="delete">Sign Out</a>
+        <div className="topnav">
+          <Link to="/">Home</Link>
+          <Link activeClassName="active" to="/courses">Courses</Link>
+          <Link activeClassName="active" to="/new">New Course</Link>
+          <Link activeClassName="active" to="/scorecards">Scorecards</Link>
+          <Link activeClassName="active" to={`/users/${this.state.user.id}`}>Profile</Link>
+          <a className="signout" href="/users/sign_out" data-method="delete">Sign Out</a>
+        </div>
         {this.props.children}
       </div>
     );
