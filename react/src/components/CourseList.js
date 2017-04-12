@@ -4,7 +4,10 @@ import Course from './Course';
 class CourseList extends Component {
   constructor(props) {
     super(props);
-    this.state = {courses: []}
+    this.state = {
+      courses: [],
+      selected: ""
+    }
     this.getCourses = this.getCourses.bind(this)
   }
 
@@ -12,8 +15,11 @@ class CourseList extends Component {
     this.getCourses();
   }
 
+  handleChange()
+
   getCourses() {
-    fetch("/api/v1/courses",
+    let selectedState = this.state.selected;
+    fetch(`/api/v1/courses/filter?state=${selectedState}`,
       {credentials: "same-origin"}
     )
     .then(response => response.json())
