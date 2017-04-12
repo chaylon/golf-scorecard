@@ -1,3 +1,8 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
 .topnav {
   background-color: #333;
   overflow: hidden;
@@ -19,10 +24,15 @@
 }
 
 .topnav a.active {
-  background-color: #4CAF50;
+  background-color: #439E1C;
   color: white;
 }
 
 .topnav .signout {
   float: right;
+}
+
+.background {
+  height: 100vh;
+  background-color: #439E1C;
 }

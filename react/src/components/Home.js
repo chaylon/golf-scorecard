@@ -24,7 +24,7 @@ class Home extends Component {
 
   render() {
     return(
-      <div>
+      <div className="background">
         <div className="topnav">
           <Link to="/">Home</Link>
           <Link activeClassName="active" to="/courses">Courses</Link>
