@@ -1,6 +1,8 @@
 body {
   padding: 0;
   margin: 0;
+  color: white;
+  font-family: 'Concert One', cursive;
 }
 
 .topnav {
@@ -23,16 +25,11 @@ body {
   color: black;
 }
 
-.topnav a.active {
-  background-color: #439E1C;
-  color: white;
-}
-
 .topnav .signout {
   float: right;
 }
 
 .background {
   height: 100vh;
-  background-color: #439E1C;
+  background-color: #316C17;
 }
