@@ -2,7 +2,7 @@ import React from 'react';
 
 const StateDropdown = props => {
   return(
-    <select>
+    <select onChange={props.onChange}>
       <option value="AL">Alabama</option>
       <option value="AK">Alaska</option>
       <option value="AZ">Arizona</option>

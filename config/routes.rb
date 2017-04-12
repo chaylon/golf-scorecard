@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :courses, only: [:index, :show]
   resources :scorecards, only: [:index, :show, :new]
   resources :users, only: [:show]
-  
+
   authenticated :user do
     root "courses#index"
   end
@@ -19,6 +19,9 @@ Rails.application.routes.draw do
       resources :scores, only: [:create]
       resources :courses, only: [:index, :show, :create] do
         resources :holes, only: [:create]
+        collection do
+          get 'filter'
+        end
       end
     end
   end
