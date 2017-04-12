@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Course from './Course';
+import StateDropdown from './StateDropdown';
 
 class CourseList extends Component {
   constructor(props) {
@@ -8,14 +9,19 @@ class CourseList extends Component {
       courses: [],
       selected: ""
     }
-    this.getCourses = this.getCourses.bind(this)
+    this.getCourses = this.getCourses.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
     this.getCourses();
   }
 
-  handleChange()
+  handleChange(selection) {
+    this.setState({selected: selection}, () => {
+      this.getCourses();
+    });
+  }
 
   getCourses() {
     let selectedState = this.state.selected;
@@ -33,6 +39,11 @@ class CourseList extends Component {
   }
 
   render() {
+    let onChange = (event) => {
+      event.preventDefault();
+      this.handleChange(event.target.value)
+    }
+
     let courses = this.state.courses.map((course) => {
       return(
         <Course
@@ -42,7 +53,8 @@ class CourseList extends Component {
       )
     })
     return(
-      <div className="courses">
+      <div>
+        Filter by state: <StateDropdown onChange={onChange}/>
         {courses}
         {this.props.children}
       </div>

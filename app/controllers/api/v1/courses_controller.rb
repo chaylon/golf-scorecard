@@ -9,7 +9,7 @@ class Api::V1::CoursesController < ApplicationController
   def filter
     state_search = params[:state]
     courses = Course.where("state LIKE ?", "%#{state_search}%")
-    binding.pry
+    # binding.pry
     render json: {courses: courses}
   end
 
