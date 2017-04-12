@@ -5,6 +5,18 @@ body {
   font-family: 'Concert One', cursive;
 }
 
+a {
+  color: #17316C;
+}
+
+a:visited {
+  color: #6C1731;
+}
+
+a:hover {
+  color: white;
+}
+
 .topnav {
   background-color: #333;
   overflow: hidden;

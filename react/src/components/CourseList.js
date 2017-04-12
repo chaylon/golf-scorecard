@@ -36,7 +36,7 @@ class CourseList extends Component {
       )
     })
     return(
-      <div>
+      <div className="courses">
         {courses}
         {this.props.children}
       </div>
