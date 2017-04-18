@@ -30,12 +30,20 @@ class User extends Component {
   }
 
   render() {
+    let rounds;
+    let average;
+    let favorite;
+    if (this.state.favorite !== null) {
+      rounds = this.state.rounds;
+      average = this.state.average;
+      favorite = this.state.favorite;
+    }
 
     return(
       <div>
-        <p>Rounds: {this.state.rounds}</p>
-        <p>Average Score: {this.state.average}</p>
-        <p>Favorite Course: {this.state.favorite}</p>
+        <p>Rounds: {rounds}</p>
+        <p>Average Score: {average}</p>
+        <p>Favorite Course: {favorite}</p>
       </div>
     );
   }
